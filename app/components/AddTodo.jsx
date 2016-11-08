@@ -11,10 +11,7 @@ var AddTodo = React.createClass({
       this.props.handleAddTodo(todoText);
     } else {
       this.refs.todoText.focus(); // places cursor back into input field.
-    }
-      
-
-    
+    }    
   },
   render: function(){
     return (
