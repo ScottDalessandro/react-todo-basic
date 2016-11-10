@@ -19,5 +19,15 @@ module.exports = {
     }
 
     return Array.isArray(todos) ? todos : [];    
+  },
+  filterTodos: function(todos, showCompleted, searchText) {
+    var filteredTodos = todos;
+
+    filteredTodos = filteredTodos.filter((todo) => {
+      // shows todos not complete, if checkbox is check to show all, incomplete and completed display.
+      return !todo.completed || showCompleted;
+    })
+
+    return filteredTodos;
   }
 };

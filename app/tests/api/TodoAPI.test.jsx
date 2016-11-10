@@ -45,5 +45,35 @@ describe('TodoAPI', () => {
       expect(actualTodos).toEqual(todos);
 
     });
+  });
+
+  describe('filterTodos', () => {
+    var todos = [{
+      id: 1,
+      text: 'Google Home',
+      completed: true
+    },
+    {
+      id: 2,
+      text: 'Other Text ',
+      completed: false
+    },
+    {
+      id: 3,
+      text: 'some other text',
+      completed: true
+    }];
+
+    it('should return all items if showCompleted is true', () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+
+      expect(filteredTodos.length).toBe(3);
+    });
+
+    it('should return all items if showCompleted is false', () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, false, '');
+
+      expect(filteredTodos.length).toBe(1);
+    });
   })
 })
