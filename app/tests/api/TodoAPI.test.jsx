@@ -50,7 +50,7 @@ describe('TodoAPI', () => {
   describe('filterTodos', () => {
     var todos = [{
       id: 1,
-      text: 'Google Home',
+      text: 'some text',
       completed: true
     },
     {
@@ -75,5 +75,20 @@ describe('TodoAPI', () => {
 
       expect(filteredTodos.length).toBe(1);
     });
-  })
-})
+
+    it('should sort by completed status', () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+      expect(filteredTodos[0].completed).toBe(false);
+    });
+
+    it('it should filter todos by searchText', () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, 'some');      
+      expect(filteredTodos.length).toBe(2);
+    });
+
+    it('should return all of todos if searchText is empty', () => {
+      var filteredTodos = TodoAPI.filterTodos(todos, true, '');
+      expect(filteredTodos.length).toBe(3);
+    });
+  });
+});
